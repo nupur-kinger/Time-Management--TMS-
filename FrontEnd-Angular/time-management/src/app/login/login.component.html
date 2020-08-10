@@ -1,0 +1,39 @@
+<div class="container">
+    <mat-card class="login-card">
+        <div class="registration">
+            <mat-label>
+                New here? 
+                <a [routerLink]="['/register']">
+                    Sign Up
+                </a>    
+            </mat-label>    
+        </div>
+ 
+        <form [formGroup]="form" (ngSubmit)="login(form.value)">
+
+            <p>
+                <mat-form-field appearance="fill">
+                    <mat-label>Username</mat-label>
+                    <input matInput name="username" id="username" formControlName="username">
+                </mat-form-field>
+            </p>
+
+            <p>
+                <mat-form-field appearance="fill">
+                    <mat-label>Password</mat-label>
+                    <input type="password" matInput name="password" id="password" formControlName="password">
+                </mat-form-field>
+                <span class="reset-password">
+                    <a [routerLink]="['/forgotPassword']">
+                        Forgot Password?
+                    </a>
+                </span>
+            </p>
+
+            <button mat-raised-button color="primary" type="submit">
+                Sign In
+            </button>
+        </form>
+    </mat-card>
+</div>
+

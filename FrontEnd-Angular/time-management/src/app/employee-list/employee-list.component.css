@@ -1,0 +1,9 @@
+.employee-list {
+    width: 100%;
+    margin: 20px 0px 5px 0px;
+}
+
+.emp-name {
+    cursor: pointer;
+    color: #1976d2;
+}

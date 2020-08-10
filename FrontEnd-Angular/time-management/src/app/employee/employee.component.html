@@ -1,0 +1,140 @@
+<form [formGroup]="form">
+    <input name="employeeId" id="employeeId" formControlName="employeeId" hidden>
+    <p>
+        <span class="multi-row">
+            <mat-form-field appearance="fill">
+                <mat-label>First Name*</mat-label>
+                <input matInput sanitize name="firstName" id="firstName" formControlName="firstName">
+                <mat-error *ngIf="form.get('firstName').errors?.isUnsafe">Invalid text</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="middle-name-field">
+                <mat-label>Middle Name</mat-label>
+                <input matInput sanitize name="middleName" id="middleName" formControlName="middleName">
+                <mat-error *ngIf="form.get('middleName').errors?.isUnsafe">Invalid text</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Last Name*</mat-label>
+                <input matInput sanitize #lastName name="lastName" id="lastName" formControlName="lastName">
+                <mat-error *ngIf="form.get('lastName').errors?.isUnsafe">Invalid text</mat-error>
+            </mat-form-field>
+        </span>
+    </p>
+
+    <p>
+        <span class="multi-row" *ngIf="!isEdit">
+            <mat-form-field appearance="fill">
+                <mat-label>Username*</mat-label>
+                <input matInput sanitize name="username" id="username" formControlName="username">
+                <mat-error *ngIf="!isUsernameValid">
+                    This username is not available. Please choose something else.
+                </mat-error>
+                
+                <mat-error *ngIf="form.get('username').errors?.isUnsafe">Invalid text</mat-error>
+            </mat-form-field>
+        
+            <mat-form-field appearance="fill" class="pwd-field">
+                <mat-label>Password*</mat-label>
+                <input matInput type="password" name="password" id="password" formControlName="password">
+                <mat-error>
+                    The password must be at least 8 characters long and must have at least one of each lowercase letter, uppercase letter and a number.
+                </mat-error>
+            </mat-form-field>
+        </span>
+    </p>
+
+    <span class="multi-row">
+        <mat-form-field appearance="fill" class="gender-field">
+            <mat-label>Gender*</mat-label>
+            <mat-select formControlName="gender">
+                <mat-option *ngFor="let gender of genders" [value]="gender.value">
+                {{gender.viewValue}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    
+        <mat-form-field appearance="fill" class="middle-field dob-field">
+            <mat-label>Date Of Birth*</mat-label>
+            <input matInput [matDatepicker]="datePicker" formControlName="dateOfBirth" id="dateOfBirth" 
+                readonly (click)="datePicker.open()">
+            <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+            <mat-datepicker #datePicker></mat-datepicker>
+        </mat-form-field>
+    
+        <mat-form-field appearance="fill">
+            <mat-label>Email*</mat-label>
+            <input matInput name="email" id="email" formControlName="email">
+            <mat-error *ngIf="email.errors?.email">Email is not valid.</mat-error>
+        </mat-form-field>
+    </span>
+
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Address*</mat-label>
+            <textarea matInput sanitize name="address" id="address" formControlName="address"></textarea>
+            <mat-error *ngIf="form.get('address').errors?.isUnsafe">Invalid text</mat-error>
+        </mat-form-field>
+    </p>
+
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Phone*</mat-label>
+            <input matInput name="phone" id="phone" formControlName="phone">
+            <mat-error *ngIf="phone.errors">Phone number is not valid.</mat-error>
+        </mat-form-field>
+    </p>
+
+    <p>
+        <span class="multi-row">
+        
+            <mat-form-field appearance="fill">
+                <mat-label>Designation*</mat-label>
+                <input matInput sanitize name="designation" id="designation" formControlName="designation">
+                <mat-error *ngIf="form.get('designation').errors?.isUnsafe">Invalid text</mat-error>
+            </mat-form-field>
+        
+            <mat-form-field appearance="fill" class="project-field">
+                <mat-label>Project*</mat-label>
+                <input matInput sanitize name="project" id="project" formControlName="project">
+                <mat-error *ngIf="form.get('project').errors?.isUnsafe">Invalid text</mat-error>
+            </mat-form-field>
+        
+            <mat-form-field appearance="fill">
+                <mat-label>Manager*</mat-label>
+                <mat-select formControlName="reportingTo">
+                    <mat-option *ngFor="let manager of managers" [value]="manager.id">
+                        {{manager.name}}
+                    </mat-option>
+                </mat-select>
+                <!-- <input matInput sanitize name="reportingTo" id="reportingTo" formControlName="reportingTo" [matAutocomplete]="auto"> -->
+            </mat-form-field>
+        
+            <!-- <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                <mat-option *ngFor="let manager of filteredOptions | async" [value]="manager">
+                    {{manager.name}}
+                </mat-option>
+            </mat-autocomplete> -->
+        </span>
+    </p>
+
+    <p *ngIf="signup || isManagerOrAdmin">
+        <mat-form-field appearance="fill">
+            <mat-label>Role*</mat-label>
+            <mat-select formControlName="role">
+                <mat-option *ngFor="let role of roles" [value]="role.value">
+                    {{role.viewValue}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </p>
+    <div *ngIf="signup" class="role-update-msg">
+        Please contact your Manager/Admin if you want your role to be changed.
+    </div>
+
+    <div class="dialog-button">
+        <button [disabled]="actionInProgress" mat-raised-button color="primary" type="submit" (click)="onSave(form.value)">Save</button>
+        <button [disabled]="actionInProgress" #resetBtn mat-raised-button color="primary" type="button" (mousedown)="onReset()" *ngIf="showReset()">Reset</button>
+        <button [disabled]="actionInProgress" #cancelBtn mat-raised-button color="primary" type="button" (mousedown)="onCancel()">Cancel</button>
+    </div>
+</form>

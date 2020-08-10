@@ -1,0 +1,75 @@
+.task-list {
+    width: 100%;
+    margin: 0px 0px 5px 0px;
+}
+
+.mat-column-date {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 15% !important;
+    width: 15% !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+
+    word-break: break-word;
+
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+
+.mat-column-task {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 30% !important;
+    width: 30% !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+
+    word-break: break-word;
+
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+
+.filter-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: end;
+}
+
+.filter-button {
+    margin: 0 10px;
+}
+
+.range-field {
+    width: 230px;
+}
+
+.button-icon {
+    margin-right: 6px;
+}
+
+.task-row {
+    background: #c4ffc4;
+}
+
+.highlight {
+    background: #ec6262;
+}
+
+.work-hours {
+    vertical-align: sub;
+}
+
+.work-hours-edit-icon {
+    vertical-align: sub;
+}
+
+.work-hours-text {
+    padding-left: 5px;
+    padding-right: 5px;
+}

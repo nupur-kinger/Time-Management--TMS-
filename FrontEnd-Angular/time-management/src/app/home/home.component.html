@@ -1,0 +1,15 @@
+<mat-sidenav-container>
+    <mat-sidenav #sidenav role="navigation">
+        <nav-list (sidenavClose)="sidenav.close()"></nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <header (sidenavToggle)="sidenav.toggle()"></header>
+
+        <mat-card class="container-card">
+            <div class="child">
+                <router-outlet></router-outlet>
+            </div>
+        </mat-card>
+
+    </mat-sidenav-content>
+</mat-sidenav-container>

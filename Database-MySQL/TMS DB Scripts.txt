@@ -1,0 +1,48 @@
+CREATE DATABASE `time_management` ;
+
+CREATE TABLE `employee` (
+  `employee_id` int NOT NULL AUTO_INCREMENT,
+  `f_name` varchar(45) DEFAULT NULL,
+  `m_name` varchar(45) DEFAULT NULL,
+  `l_name` varchar(45) DEFAULT NULL,
+  `username` varchar(45) DEFAULT NULL,
+  `password` varchar(200) DEFAULT NULL,
+  `gender` varchar(1) DEFAULT NULL,
+  `is_valid` tinyint DEFAULT '1',
+  `date_of_birth` date DEFAULT NULL,
+  `role` int DEFAULT NULL,
+  `designation` varchar(45) DEFAULT NULL,
+  `project` varchar(45) DEFAULT NULL,
+  `reporting_to` int DEFAULT NULL,
+  `start_time` datetime DEFAULT '1970-01-01 09:00:00',
+  `end_time` datetime DEFAULT '1970-01-01 18:00:00',
+  `email` varchar(100) DEFAULT NULL,
+  `phone` varchar(20) DEFAULT NULL,
+  `address` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`employee_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1001 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `login` (
+  `user_id` int NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(200) NOT NULL,
+  `is_valid` tinyint NOT NULL DEFAULT '1',
+  `logincol` varchar(45) DEFAULT NULL,
+  UNIQUE KEY `user_id_UNIQUE` (`user_id`),
+  UNIQUE KEY `username_UNIQUE` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `task` (
+  `task_id` int NOT NULL AUTO_INCREMENT,
+  `date` datetime DEFAULT NULL,
+  `start_time` datetime DEFAULT NULL,
+  `end_time` datetime DEFAULT NULL,
+  `task` varchar(500) NOT NULL,
+  `notes` varchar(500) DEFAULT NULL,
+  `employee_id` int NOT NULL,
+  PRIMARY KEY (`task_id`),
+  KEY `employee_fk_idx` (`employee_id`),
+  CONSTRAINT `employee_fk` FOREIGN KEY (`employee_id`) REFERENCES `employee` (`employee_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+

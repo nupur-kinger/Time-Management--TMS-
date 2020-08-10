@@ -1,0 +1,49 @@
+ <form [formGroup]="form">
+    <p>
+        <span class="multi-row">
+            <mat-form-field appearance="fill">
+                <mat-label>Date*</mat-label>
+                <input matInput [matDatepicker]="datePicker" formControlName="date" id="date" 
+                    readonly (click)="datePicker.open()">
+                <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+                <mat-datepicker #datePicker></mat-datepicker>
+            </mat-form-field>
+        
+            <mat-form-field appearance="fill" class="time-field">
+                <mat-label>Start Time*</mat-label> 
+                <input matInput [owlDateTimeTrigger]="startTime" [owlDateTime]="startTime" formControlName="startTime" id="startTime" >
+                <owl-date-time [pickerType]="'timer'"   #startTime></owl-date-time>
+            </mat-form-field>
+           
+            <mat-form-field appearance="fill" class="time-field">
+                <mat-label>End Time*</mat-label> 
+                
+                <input matInput [owlDateTimeTrigger]="endTime" [owlDateTime]="endTime" formControlName="endTime" id="endTime" >
+                <owl-date-time [pickerType]="'timer'"   #endTime></owl-date-time>
+            </mat-form-field>
+        </span>
+    </p>
+    
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Task Description*</mat-label>
+            <textarea matInput sanitize name="desc" id="desc" formControlName="task"></textarea>
+            <mat-error *ngIf="form.get('task').errors?.isUnsafe">Invalid text</mat-error>
+        </mat-form-field>
+    </p>
+
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Notes</mat-label>
+            <textarea matInput sanitize name="notes" id="notes" formControlName="notes"></textarea>
+            <mat-error *ngIf="form.get('notes').errors?.isUnsafe">Invalid text</mat-error>
+        </mat-form-field>
+    </p>
+
+    <div class="dialog-button">
+        <button mat-raised-button color="primary" type="submit" (click)="onSave(form.value)">Save</button>
+        <button mat-raised-button color="primary" type="submit" (click)="onReset()" *ngIf="showReset()">Reset</button>
+        <button mat-raised-button color="primary" type="submit" (click)="onCancel()">Cancel</button>
+    </div>
+
+</form>

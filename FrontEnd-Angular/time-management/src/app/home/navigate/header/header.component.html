@@ -1,0 +1,36 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button (click)="onToggleSidenav()">
+        <mat-icon>menu</mat-icon>
+    </button>
+    
+    <span class="title">
+        <a routerLink="/home">
+            <mat-icon>fact_check</mat-icon>
+            Time Management
+        </a>
+    </span>
+
+    <div class="greetings">
+        <button mat-button [matMenuTriggerFor]="optionsMenu">
+            Hi, {{ emp.firstName }}
+            <mat-icon>arrow_drop_down</mat-icon>
+        </button>
+    </div>
+    <mat-menu #optionsMenu="matMenu">
+        <div class="details">
+            <p>
+                {{ name }}
+            </p>
+            <p>
+                {{ this.emp.email }}
+            </p>
+            <div class="role">
+                <span *ngIf="emp.role === 1">ADMIN</span>
+                <span *ngIf="emp.role === 2">MANAGER</span>
+            </div>
+        </div>
+        <hr>
+        <button mat-menu-item (click)="logout()">Sign out</button>
+    </mat-menu>
+    
+</mat-toolbar>

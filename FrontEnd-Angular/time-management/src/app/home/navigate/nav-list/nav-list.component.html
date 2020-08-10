@@ -1,0 +1,21 @@
+<mat-nav-list>
+    <a mat-list-item routerLink="taskList" (click)="onSidenavClose()">
+        <mat-icon>assignment</mat-icon> <span class="nav-caption">My Tasks</span>   
+    </a>
+    <ng-template [ngIf]="canManageEmployees()">
+        <a mat-list-item routerLink="employeeList" (click)="onSidenavClose()">
+            <mat-icon>people</mat-icon><span class="nav-caption">Manage Employees</span>
+        </a>
+    </ng-template>
+    <a mat-list-item routerLink="profile" (click)="onSidenavClose()">
+        <mat-icon>face</mat-icon><span class="nav-caption">My Profile</span>
+    </a>
+    <a mat-list-item routerLink="resetPassword" (click)="onSidenavClose()">
+        <mat-icon>security</mat-icon><span class="nav-caption">Reset Password</span>
+    </a>
+    <ng-template [ngIf]="false">
+        <a mat-list-item routerLink="reports" (click)="onSidenavClose()">
+            <mat-icon>analytics</mat-icon><span class="nav-caption">Reports</span>
+        </a>
+    </ng-template>
+</mat-nav-list>

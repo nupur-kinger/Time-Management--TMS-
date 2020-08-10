@@ -1,0 +1,21 @@
+.registration {
+    text-align: right;
+    padding-bottom: 10px;
+}
+
+.login-button {
+    margin: 5px;
+}
+
+.reset-password {
+    text-align: right;
+}
+
+.login-card {
+    width: 100%;
+}
+
+.container {
+    width: 50%;
+    margin-top: 100px;
+}

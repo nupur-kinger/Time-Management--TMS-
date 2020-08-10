@@ -1,0 +1,105 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~ng-pick-datetime/assets/style/picker.min.css";
+
+html, body { 
+    margin: 0;
+    height: 100%; 
+}
+
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.page-title {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: x-large;
+    font-weight: 500;
+}
+
+.dialog-button {
+    text-align: center;
+}
+
+.dialog-button > button {
+    margin: 0px 10px;
+}
+
+mat-sidenav-container, mat-sidenav-content, mat-sidenav {
+    height: 100%;
+}
+ 
+mat-sidenav {
+    width: 250px;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+mat-card-title {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+a {
+    cursor: pointer;
+    color: blue;
+}
+
+.multi-row {
+    display: flex;
+}
+
+.time-field, .middle-name-field, .project-field, .middle-field {
+    margin: 0 10px;
+}
+
+.pwd-field {
+    margin-left: 10px;
+}
+
+.gender-field {
+    width: 100px;
+}
+
+.dob-field {
+    width: 250px;
+}
+
+.time-field-ht {
+    max-height: 51px;
+}
+
+.mat-column-actions {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 7% !important;
+    width: 7% !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+
+    word-break: break-word;
+
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+
+.employee-container {
+    overflow-y: scroll;
+    height: 500px;
+    width: 800px;
+    padding-right: 5px;
+}
+
+.table-header {
+    line-height: 68px;
+}
+
+.add-task, .add-employee {
+    float: left;
+}
+
+.registration-card, .profile-card, .reset-password-card {
+    margin: 20px;
+}

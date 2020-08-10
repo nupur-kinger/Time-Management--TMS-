@@ -1,0 +1,55 @@
+<div class="table-header">
+    <div class="add-employee">
+        <button mat-raised-button 
+            color="primary" 
+            (click) = "addEmployeeDialog()">
+            <mat-icon class="button-icon">add</mat-icon>
+            Add New Employee
+        </button>
+    </div>
+</div>
+
+<table mat-table 
+    [dataSource]="employeeDetails" 
+    class="mat-elevation-z8 employee-list">
+
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let emp"> 
+            <a (click)="navigateToTaskList(emp)" class="emp-name">
+                {{ emp.firstName }} 
+            </a> 
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef> Email </th>
+        <td mat-cell *matCellDef="let emp"> {{ emp.email }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="designation">
+        <th mat-header-cell *matHeaderCellDef> Designation </th>
+        <td mat-cell *matCellDef="let emp"> {{ emp.designation }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="project">
+        <th mat-header-cell *matHeaderCellDef> Project </th>
+        <td mat-cell *matCellDef="let emp"> {{ emp.project }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="manager">
+        <th mat-header-cell *matHeaderCellDef> Manager </th>
+        <td mat-cell *matCellDef="let emp"> {{ emp.manager }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let emp"> 
+            <a (click)="edit(emp)"><mat-icon>edit</mat-icon></a>
+            <a (click)="delete(emp.employeeId)"><mat-icon>delete</mat-icon></a>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+</table>

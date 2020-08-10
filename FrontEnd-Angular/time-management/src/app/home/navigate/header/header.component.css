@@ -1,0 +1,44 @@
+a {
+    text-decoration: none;
+    color: white;
+}
+ 
+a:hover, a:active{
+    color: lightgray;
+}
+ 
+.navigation-items{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+ 
+mat-toolbar{
+    border-radius: 3px;
+}
+ 
+@media(max-width: 959px){
+    mat-toolbar{
+        border-radius: 0px;
+    }
+}
+
+.greetings {
+    text-align: right;
+    width: 100%;
+    font-size: 15px;
+}
+
+.role {
+    line-height: 15px;
+}
+
+.title {
+    padding: 15px;
+    font-weight: 500;
+}
+
+.details {
+    padding: 0 20px;
+    width: 250px;
+}

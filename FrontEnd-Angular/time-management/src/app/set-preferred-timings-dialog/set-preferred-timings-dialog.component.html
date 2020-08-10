@@ -1,0 +1,53 @@
+<div class="page-title">Set work hours</div>
+
+<form [formGroup]="form">
+    <p>
+        <span class="multi-row">
+            <!-- <input aria-label="default time" [ngxTimepicker]="defaultValue" [value]="'05:11 pm'"  readonly> -->
+            <!-- <ngx-timepicker-field [defaultTime]="'11:11 pm'" class="time-field time-field-ht" [format]="24" formControlName="startTime" id="startTime" [controlOnly]="true">
+            </ngx-timepicker-field> -->
+
+            
+            <!-- <ngx-timepicker-field class="time-field time-field-ht" [format]="24" [defaultTime]="'23:11'" id="endTime1" onchange="alert('changed time')" [controlOnly]="true" #eTime> -->
+            
+                <mat-form-field appearance="fill" class="time-field">
+                    <mat-label>Start Time:</mat-label> 
+                    <input matInput [owlDateTimeTrigger]="startTime" [owlDateTime]="startTime" formControlName="startTime" id="startTime" >
+                    <owl-date-time [pickerType]="'timer'" [startAt]="startTime1"  #startTime></owl-date-time>
+                </mat-form-field>
+    
+    
+               
+                <mat-form-field appearance="fill" class="time-field">
+                    <mat-label>End Time:</mat-label> 
+                    
+                    <input matInput [owlDateTimeTrigger]="endTime" [owlDateTime]="endTime" formControlName="endTime" id="endTime" >
+                    <owl-date-time [pickerType]="'timer'" [startAt]="endTime1"  #endTime></owl-date-time>
+                </mat-form-field>
+
+
+                
+
+
+<!-- 
+            <ngx-timepicker-field class="time-field time-field-ht" [format]="24" formControlName="endTime" [defaultTime]="'23:11'" id="endTime1" [controlOnly]="true" #eTime>
+            
+            </ngx-timepicker-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>End time</mat-label>
+                <!-- <label formControlName="endTime" onchange="alert(this.value)"  value="{{ eTime.timepickerTime }}"></label> -->
+                <!-- <input type="text" matInput id='endTime' value="{{ eTime.timepickerTime }}"> -->
+                <!-- <input type="text" formControlName="endTime" id="endTime" value="{{ eTime.timepickerTime }}"> -->
+            <!-- </mat-form-field> -->
+         
+
+        </span>
+    </p>
+    
+    <div class="dialog-button">
+        <button mat-raised-button color="primary" type="submit" (click)="onSave(form.value)">Save</button>
+        <button mat-raised-button color="primary" type="submit" (click)="onCancel()">Cancel</button>
+    </div>
+
+</form>
